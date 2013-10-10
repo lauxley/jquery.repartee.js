@@ -36,9 +36,9 @@ by default, it returns true if the displayed width of the image is at least 20% 
 Example
 -------
 
-`$('img.responsive').repartee(function(img, source_width, display_width) {  
-      var new_size = display_width - display_width % A_REASONABLE_GRID_SIZE || A_REASONABLE_GRID_SIZE;  
-      return img.attr('src').replace(/width=(\d+)/, 'width='+new_size);  
+`$('img.responsive').repartee(function(img, source_width, display_width) { 
+      var new_size = display_width - display_width % A_REASONABLE_GRID_SIZE || A_REASONABLE_GRID_SIZE; 
+      return img.attr('src').replace(/width=(\d+)/, 'width='+new_size); 
 });`
 
 First of all, i only select images with the 'responsive' class, this might be important if you have a very complex responsive logic and want to have different callbacks for different types of images.  
@@ -59,6 +59,7 @@ The name is lame. i choose it because it's a quick and smart 'response', and fin
 Todo
 ----
 
+* add 2 custom events to trigger and catch manually the source/width checking
 * handle the resize event ? (in case the user flips his device)
 * add an example for a custom comparaison function
 * add an example with a bit more complex logic ?
