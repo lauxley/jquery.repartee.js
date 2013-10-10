@@ -36,11 +36,13 @@ by default, it returns true if the displayed width of the image is at least 20% 
 Example
 -------
 
-```javascript
+```
+javascript
 $('img.responsive').repartee(function(img, source_width, display_width) { 
       var new_size = display_width - display_width % A_REASONABLE_GRID_SIZE || A_REASONABLE_GRID_SIZE; 
       return img.attr('src').replace(/width=(\d+)/, 'width='+new_size); 
-});```
+});
+```
 
 First of all, i only select images with the 'responsive' class, this might be important if you have a very complex responsive logic and want to have different callbacks for different types of images.  
 The second line may be a bit cryptic, but its a good example of a responsive image logic, it returns the closest multiplier of A_REASONABLE_GRID_SIZE to display_width(always rounded down) and being non zero.  
