@@ -1,19 +1,3 @@
-/*
-        
-
-
- * 
- * 
- 
- * Example:
-
- * 
- * explanations:
- * 
- * 
-
- */
-
 jquery.repartee.js
 ==================
 
