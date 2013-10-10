@@ -1,13 +1,14 @@
 jquery.repartee.js
 ==================
 
+Note: this is a prototype, not used in a production environment yet.
 jquery.repartee.js is a simplistic responsive image jquery plugin.
 
 Description
 -----------
 
-The goal is to easily change the urls of the images in a page, if need be.
-this library does not contain any form of url logic, 
+The goal is to easily change the source of images in a page, if needs be, meaning if the source width is too far from the displayed width.
+This library does not contain any form of url logic,
 it only handles the transparent loading and displaying from the new source of the image.
 
 But why ?
@@ -35,14 +36,14 @@ Example
 -------
 
 `$('img.responsive').repartee(function(img, source_width, display_width) {
-      var new_size = display_width - display_width % A_REASONIBLE_GRID_SIZE || A_REASONIBLE_GRID_SIZE;
+      var new_size = display_width - display_width % A_REASONABLE_GRID_SIZE || A_REASONABLE_GRID_SIZE;
       return img.attr('src').replace(/width=(\d+)/, 'width='+new_size);
 });`
 
 First of all, i only select images with the 'responsive' class, 
 this might be important if you have a very complex responsive logic and want to have different callbacks for different types of images.
 The second line may be a bit cryptic, but its a good example of a responsive image logic, 
-it returns the closest multiplier of A_REASONIBLE_GRID_SIZE to display_width(always rounded down) and being non zero.
+it returns the closest multiplier of A_REASONABLE_GRID_SIZE to display_width(always rounded down) and being non zero.
 then the anonymous function returns the new url with the width changed accordingly.
  
 The lib will then proceed to load the new image asynchronously and display it when it's ready.
