@@ -59,8 +59,8 @@ Example
 ```
 javascript
 $('img.responsive').repartee(function(img, source_width, display_width) { 
-      var new_size = display_width - display_width % A_REASONABLE_GRID_SIZE || A_REASONABLE_GRID_SIZE; 
-      return img.attr('src').replace(/width=(\d+)/, 'width='+new_size); 
+    var new_size = display_width - display_width % A_REASONABLE_GRID_SIZE || A_REASONABLE_GRID_SIZE; 
+    return img.attr('src').replace(/width=(\d+)/, 'width='+new_size); 
 });
 ```
 
