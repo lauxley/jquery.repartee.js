@@ -43,7 +43,7 @@ jQuery.fn.repartee = function(url_pattern_callback, comparaison_function) {
         var rpl = new Image();
         $(rpl).on('load', function() {
             $img.attr('src', rpl.src);
-            rpl.remove();
+            $(rpl).remove();
             return;
         });
         rpl.src = url_pattern_callback($img, img.realWidth(), $img.width());
