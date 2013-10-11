@@ -1,20 +1,10 @@
 /*
  * The goal is to easily change the urls of the images in a page, if need be.
  * this library does not contain any form of url logic, 
- * it only handles the transparent loading and displaying from the new source of the image.
- * 
- * why ?
- * - i want a simple solution
- * - i want a solution that is not tied to how or where i host my images
- * - my responsive strategy is not definitive and i want to be able to easily switch/test things around
- * 
+ * it only handles the transparent loading and displaying from the new source of the image. * 
  * 
  * Usage:
  * $('img').repartee(url_pattern_callback, [optional_comparaison_function]);
- * 
- * The url_pattern_callback function accepts 3 arguments: 
- * the image element itself, the width of the source image, and the width of the displayed image.
- * And returns the new source url for the image. It is your responsability to implement your responsive logic in this function.
  * 
  * For more docs, see https://github.com/lauxley/jquery.repartee.js
  * 
@@ -56,7 +46,7 @@ jQuery.fn.repartee = function(url_pattern_callback, comparaison_function) {
             $(rpl).on('load', function() {
                 $img.attr('src', rpl.src);
                 rpl.remove();
-                return false;
+                return;
             });
             rpl.src = url_pattern_callback($img, img.realWidth(), $img.width());
         }
