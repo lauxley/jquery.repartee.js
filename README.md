@@ -37,10 +37,10 @@ Events
 
 There is 2 custom events available
 
-**repartee-src-changed**
+* **repartee-src-changed** 
 This event is fired when an image source has been changed.
 
-**repartee-check**
+* **repartee-check** 
 You can manually trigger this event on an image on which you already called repartee to process it again as if it was just loaded, 
 for example you may want to do something like this in case the user flip his device:
 
