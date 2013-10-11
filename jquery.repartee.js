@@ -10,7 +10,7 @@
  * 
  */
 
-//patch ie8<
+// patch ie8<
 // can't patch the prototype for naturalWidth because setting a property would be too complex for every IE versions
 // using a custom method instead
 var dummy = new Image();
@@ -40,25 +40,32 @@ jQuery.fn.repartee = function(url_pattern_callback, comparaison_function) {
 
     var load_new_img = function(img) {
         var $img = $(img);
-        // ensure the img is really loaded
+        var rpl = new Image();
+        $(rpl).on('load', function() {
+            $img.attr('src', rpl.src);
+            rpl.remove();
+            return;
+        });
+        rpl.src = url_pattern_callback($img, img.realWidth(), $img.width());
+        $img.trigger('repartee-src-changed');
+    };
+
+    var process_img = function(ev, img) {
+        var $img = $(img);
         if($img.width() && cmp(img.realWidth(), $img.width())) {
-            var rpl = new Image();
-            $(rpl).on('load', function() {
-                $img.attr('src', rpl.src);
-                rpl.remove();
-                return;
-            });
-            rpl.src = url_pattern_callback($img, img.realWidth(), $img.width());
+            load_new_img(img);
         }
     };
 
     $.each(this, function(i, img) {
+        $(img).on('repartee-check', function(ev) { process_img(ev, ev.target); });
         if (img.complete) {
-            load_new_img(img);
+            $(img).trigger('repartee-check');
         } else {
-            $(img).on('load', load_new_img);
+            $(img).on('load', process_img);
         }
     });
+
     return this;
 };
 })(jQuery);

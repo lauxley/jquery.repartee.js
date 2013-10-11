@@ -32,6 +32,26 @@ the width of the source image and the width of the displayed image.
 And returns true if the image source should be changed for this device.  
 by default, it returns true if the displayed width of the image is at least 20% larger than the source image.
 
+Events
+------
+
+There is 2 custom events available
+
+**repartee-src-changed**
+This event is fired when an image source has been changed.
+
+**repartee-check**
+You can manually trigger this event on an image on which you already called repartee to process it again as if it was just loaded, 
+for example you may want to do something like this in case the user flip his device:
+
+```javascrip
+   $(window).on('resize', 
+                function() { 
+                   $('img').trigger('repartee-check') 
+                });
+```
+**Note:** depending on the browser, the resize event is fired when the page is first loaded, and potentially more than once when the device is flipped, so you should make sure that your methods handle this gracefully.
+
 
 Example
 -------
@@ -62,7 +82,5 @@ The name is lame. i choose it because it's a quick and smart 'response', and fin
 Todo
 ----
 
-* add 2 custom events to trigger and catch manually the source/width checking
-* handle the resize event ? (in case the user flips his device)
 * add an example for a custom comparaison function
 * add an example with a bit more complex logic ?
